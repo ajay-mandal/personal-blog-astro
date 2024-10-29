@@ -94,45 +94,65 @@
     /**
      * Run fetch from above
      */
-    const { data } = await getContributions(
-      import.meta.env.PUBLIC_GITHUB_TOKEN, // token in .env file
-      "ajay-mandal" // your GitHub account name
-    );
-  
-    /**
-     * If there's an error with the fetch or the user doesn't exist, show error text
-     */
-    if (!data || !data.user) {
-      const oops = document.getElementById("contribution-error");
-      oops?.classList.remove("hidden");
-      throw "Error fetching from Github";
-    }
-  
-    /**
-     * Drill down to data from fetch request
-     */
-    const {
-      user: {
-        contributionsCollection: {
-          contributionCalendar: { weeks },
-        },
-      },
-    }: GraphQLRes = data;
-  
-    /**
-     * Loop through the weeks + add them to the parent div
-     */
-    weeks.forEach(({ contributionDays }, i) => {
-      // Loop through each week's days + add them to their week
-      contributionDays.forEach(({ color, date, contributionCount }, j) => {
-        const bgColor = color === "#ebedf0" ? "rgba(235,	237,	240, 0.15)" : color; // Make white squares a more pleasing gray
-        // Get + update each day square
-        const dayDiv = document.getElementById(`week-${i}-day-${j}`);
-        dayDiv?.setAttribute("style", `background-color: ${bgColor}`);
-        dayDiv?.setAttribute(
-          "title",
-          `${date} - ${contributionCount} public commits`
+    async function fetchAndRenderContributions(){
+      try {
+        const { data } = await getContributions(
+          import.meta.env.PUBLIC_GITHUB_TOKEN, // token in .env file
+          "ajay-mandal" // your GitHub account name
         );
-      });
-    });
+      
+        /**
+         * If there's an error with the fetch or the user doesn't exist, show error text
+         */
+        if (!data || !data.user) {
+          const oops = document.getElementById("contribution-error");
+          oops?.classList.remove("hidden");
+          throw "Error fetching from Github";
+        }
+      
+        /**
+         * Drill down to data from fetch request
+         */
+        const {
+          user: {
+            contributionsCollection: {
+              contributionCalendar: { weeks },
+            },
+          },
+        }: GraphQLRes = data;
+      
+        /**
+         * Loop through the weeks + add them to the parent div
+         */
+        weeks.forEach(({ contributionDays }, i) => {
+          // Loop through each week's days + add them to their week
+          contributionDays.forEach(({ color, date, contributionCount }, j) => {
+            const bgColor = color === "#ebedf0" ? "rgba(235,	237,	240, 0.15)" : color; // Make white squares a more pleasing gray
+            // Get + update each day square
+            const dayDiv = document.getElementById(`week-${i}-day-${j}`);
+            dayDiv?.setAttribute("style", `background-color: ${bgColor}`);
+            dayDiv?.setAttribute(
+              "title",
+              `${date} - ${contributionCount} public commits`
+            );
+          });
+        });
+      }catch(error) {
+        console.error('Error fetching contributions:', error);
+      }
+    }
+
+
+    function handleNavigation() {
+    // Only fetch if we're on the about page
+      if (window.location.pathname === '/about/' || window.location.pathname === '/about') {
+        fetchAndRenderContributions();
+      }
+    }
+
+  // Initial load - only if on about page
+  handleNavigation();
+
+  // Re-run on client-side navigation
+  document.addEventListener('astro:page-load', handleNavigation);
   </script>
