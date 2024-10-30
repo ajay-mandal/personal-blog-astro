@@ -1,7 +1,7 @@
 <section>
     <h3 class="">Commits to GitHub repos</h3>
-    <div class="flex flex-col items-center justify-center">
-      <div id="contributions" class="flex gap-1">
+    <div class="flex flex-col items-center justify-center ">
+      <div id="contributions" class="flex gap-1 ">
         {
           Array.apply(null, Array(53)).map((week, i) => {
             return (
@@ -13,7 +13,7 @@
                   return (
                     <div
                       id={`week-${i}-day-${j}`}
-                      class="h-2 w-2 lg:h-3 lg:w-2.5"
+                      class="h-2 w-2 lg:h-3 lg:w-2.5 border border-gray-600 dark:border-none"
                       style="background-color: rgba(235,	237,	240, 0.15);"
                     />
                   );
