@@ -2,6 +2,7 @@
 title: Youtube Clone
 author: Ajay Mandal
 pubDatetime: 2024-10-29T22:34:01.603Z
+modDatetime: 2024-11-01T14:23:25.458Z
 slug: youtube-clone-backend
 featured: true
 draft: false
@@ -12,6 +13,9 @@ tags:
   - authentication
   - firebase
   - gcp
+  - api
+  - nextjs
+  - typescript
 description: Breakdown of advance backend communication that youtube maybe using for video transcoding
 ---
 ![yt clone cover image](@assets/images/youtube-clone.png)
