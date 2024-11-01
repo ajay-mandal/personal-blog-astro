@@ -16,6 +16,7 @@ tags:
   - api
   - nextjs
   - typescript
+ogImage: "../../assets/images/youtube-clone.png"
 description: Breakdown of advance backend communication that youtube maybe using for video transcoding
 ---
 ![yt clone cover image](@assets/images/youtube-clone.png)
