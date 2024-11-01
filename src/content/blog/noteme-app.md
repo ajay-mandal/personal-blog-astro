@@ -15,7 +15,7 @@ tags:
   - api
   - prisma
   - jwt
-ogImage: "../../assets/images/noteme-app.png"
+ogImage: ../../assets/images/noteme-app.png
 description: CRUD based nextjs blog app with honojs api on edge runtime deployed with cf workers
 ---
 ![note-me-app](@assets/images/noteme-app.png)
