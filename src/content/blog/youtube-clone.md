@@ -2,7 +2,7 @@
 title: Youtube Clone
 author: Ajay Mandal
 pubDatetime: 2024-10-29T22:34:01.603Z
-modDatetime: 2024-11-01T14:23:25.458Z
+modDatetime: 2024-11-02T09:45:59.638Z
 slug: youtube-clone-backend
 featured: true
 draft: false
@@ -21,6 +21,13 @@ description: Breakdown of advance backend communication that youtube maybe using
 ---
 ![yt clone cover image](@assets/images/youtube-clone.png)
 
+<div class="flex justify-between">
+
+[Live Link](https://youtube-clone.ajaymandal.me/)
+
+[Github Link](https://github.com/ajay-mandal/youtube-clone)
+
+</div>
 
 ## Table of contents
 
