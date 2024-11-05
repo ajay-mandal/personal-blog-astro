@@ -2,7 +2,7 @@
 title: Youtube Clone
 author: Ajay Mandal
 pubDatetime: 2024-10-29T22:34:01.603Z
-modDatetime: 2024-11-02T09:45:59.638Z
+modDatetime: 2024-11-05T13:30:28.441Z
 slug: youtube-clone-backend
 featured: true
 draft: false
@@ -16,10 +16,10 @@ tags:
   - api
   - nextjs
   - typescript
-ogImage: ../../assets/images/youtube-clone.png
+ogImage: ../../assets/images/youtube-clone/youtube-clone.png
 description: Breakdown of advance backend communication that youtube maybe using for video transcoding
 ---
-![yt clone cover image](@assets/images/youtube-clone.png)
+![yt clone cover image](@assets/images/youtube-clone/youtube-clone.png)
 
 <div class="flex justify-between">
 
@@ -45,11 +45,11 @@ Youtube in itself is a complex app. I have tried to understand and build the vid
 
 ## System Design
 
-![system-design](@assets/images/yt-clone-system-design.png)
+![system-design](@assets/images/youtube-clone/yt-clone-system-design.png)
 
 ## Video Processing Service
 
-```
+```shell
 // youtube-clone/video-processing-service
 npm init -y
 npx tsc --init
@@ -62,7 +62,7 @@ npm i firebase-admin
 
 - Also install ffmpeg system
 
-```
+```shell
 // For mac using brew
 brew install ffmpeg
 ```
@@ -82,21 +82,21 @@ Sign in to [`console.firebase.google.com`](http://console.firebase.google.com/) 
 
 2. Login cloud CLO locally
 
-```tsx
-// Login to account
+```shell
+# Login to account
 gcloud auth login
 ```
 
 3. Set the project 
 
-```tsx
-// Set project id
+```shell
+# Set project id
 gcloud config set project yt-devclone-d5b1f
 ```
 
 4. Update the components
 
-```tsx
+```shell
 gcloud components update
 ```
 
@@ -128,7 +128,7 @@ Repository created
 
 - Dockerfile
     
-    ```tsx
+    ```docker
     # Stage 1
     FROM node:20 AS builder
     
@@ -160,19 +160,19 @@ Repository created
     ```
     
 - Docker image build and push to the docker repository, change location and respective fields as per your configuration.
-```
+```shell
 sudo docker build --platform=linux/amd64 -t asia-south1-docker.pkg.dev/yt-devclone-d5b1f/video-processing-repository/video-processing-service .
 ```
 
 - Authorize docker to push images to gcloud
 
-```tsx
+```shell
 gcloud auth configure-docker asia-south1-docker.pkg.dev
 ```
 
 - Push the docker image to Artifact
 
-```tsx
+```shell
 docker push asia-south1-docker.pkg.dev/yt-devclone-d5b1f/video-processing-repository/video-processing-service
 ```
 
@@ -216,7 +216,7 @@ Copy the URL of the Cloud Run
 
 ### Add a notification 
 `VIP STEP`
-```tsx
+```shell
 gsutil notification create -t video-processing-topic -f json OBJECT_FINALIZE gs://ytclone-raw-videos-bucket
 ```
 
@@ -244,20 +244,20 @@ Get the code [here](https://github.com/ajay-mandal/youtube-clone/tree/main/yt-cl
 
 Install firebase-tools globally
 
-```tsx
+```shell
 $ npm install -g firebase-tools
 ```
 
 Login to firebase
 
-```tsx
-// youtube-clone/yt-api-service
+```shell
+# youtube-clone/yt-api-service
 firebase login
 ```
 
 Init the firebase api service 
 
-```tsx
+```shell
 firebase init functions
 -- select the existing project
 -- select Typescript
@@ -266,7 +266,7 @@ firebase init functions
 
 Install functions and admin
 
-```tsx
+```shell
 npm i firebase-functions@latest firebase-admin@latest
 ```
 
@@ -276,9 +276,9 @@ npm i firebase-functions@latest firebase-admin@latest
 
 Deploy the functions
 
-```tsx
+```shell
 npm run deploy
-// To separately deploy the functions
+# To separately deploy the functions
 firebase deploy --only functions:GenerateUploadUrl
 ```
 
@@ -310,7 +310,7 @@ Grab the same service url and add one more role, `Service Account Token Creator`
 
 `youtube-clone/utils/gcp-cors.json`
 
-```tsx
+```json
 [
     {
         "origin": ["*"],
@@ -323,7 +323,7 @@ Grab the same service url and add one more role, `Service Account Token Creator`
 
 Implement this cors policy
 
-```tsx
+```shell
 gcloud storage buckets update gs://ytclone-raw-videos-bucket --cors-file=utils/gcs-cors.json
 ```
 
@@ -333,7 +333,7 @@ Enable **`IAM Service Account Credentials API`**
 
 Add `.env.local` file with following attributes in frontend app
 
-```
+```shell
 NEXT_PUBLIC_FIREBASE_API_KEY=BCdeFgHiJ0kLmNOP1qR9sTuv2Wxy2Za8B2C5dEf
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=yt-clone-64927.firebaseapp.com
 NEXT_PUBLIC_PROJECT_ID=yt-clone-64927
