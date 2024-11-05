@@ -50,7 +50,7 @@ Youtube in itself is a complex app. I have tried to understand and build the vid
 ## Video Processing Service
 
 ```shell
-// youtube-clone/video-processing-service
+# youtube-clone/video-processing-service
 npm init -y
 npx tsc --init
 npm i express @types/express
@@ -63,7 +63,7 @@ npm i firebase-admin
 - Also install ffmpeg system
 
 ```shell
-// For mac using brew
+# For mac using brew
 brew install ffmpeg
 ```
 ---
