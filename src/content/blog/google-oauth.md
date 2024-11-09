@@ -7,7 +7,7 @@ featured: false
 draft: false
 tags:
   - google
-  - oauth
+  - Oauth
   - gcp
 description: How to use google OAuth service in own app
 ---
