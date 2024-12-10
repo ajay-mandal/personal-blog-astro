@@ -63,6 +63,7 @@ interface CartProps {
 - `addItems: (data: Product) => void` is a function that add items to cart, takes a Product as an argument and returns nothing (void).
 - `removeItem: (id: string) => void` is a function that removes item from cart using their id, takes id as an argument, returns nothing (void)
 - `removeAll: () => void;` is a function that removes all item from cart, takes no argument and returns nothing (void).
+
 Here, data is of type `Product` as in
 ```ts
 export interface Product {
