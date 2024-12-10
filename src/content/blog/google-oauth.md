@@ -2,6 +2,7 @@
 title: Google OAuth Service
 author: Ajay Mandal
 pubDatetime: 2024-10-31T09:24:33.568Z
+modDatetime: 2024-12-10T06:29:08.126Z
 slug: google-oauth-external
 featured: false
 draft: false
@@ -12,7 +13,7 @@ tags:
 description: How to use google OAuth service in own app
 ---
 
-# Google OAuth Service Configuration on external app
+### Google OAuth Service Configuration on external app
 ![google-oauth](@assets/images/google-oauth/google-oauth.jpeg)
 
 To use the OAuth service of Google in our app, we need to create a project in our gcp console and create a API service in it.
