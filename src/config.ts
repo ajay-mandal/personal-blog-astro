@@ -3,7 +3,7 @@ import type { Site, SocialObjects } from "./types";
 export const SITE: Site = {
   website: "https://blogs.ajaymandal.me/",
   author: "Ajay Mandal",
-  profile: "https://ajaymandal.me/",
+  profile: "https://ajaymandal.vercel.app/",
   desc: "A minimal, responsive and SEO-friendly personal blog website.",
   title: "Ajay's Space",
   ogImage: "astropaper-og.jpg", // To be replaced
@@ -41,7 +41,7 @@ export const SOCIALS: SocialObjects = [
   },
   {
     name: "Mail",
-    href: "mailto:ajayrox48@gmail.com",
+    href: "mailto:ajaymandal.work07@gmail.com",
     linkTitle: `Send an email to ${SITE.title}`,
     active: true,
   },
